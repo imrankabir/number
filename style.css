@@ -6,7 +6,7 @@ body {
     background: #f9f9f9;
     font-family: Arial, sans-serif;
 }
-#container {
+.container {
     gap: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -29,7 +29,4 @@ body {
 .box:hover {
     background: #0056b3;
     transform: scale(1.1);
-}
-#audio {
-    display: none;
 }
