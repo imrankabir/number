@@ -13,5 +13,3 @@ for (let i = 1; i <= 100; i++) {
     box.onclick = e => speak(i);
     container.appendChild(box);
 }
-
-const audio = document.querySelector('#audio');
