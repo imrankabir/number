@@ -56,9 +56,6 @@ body {
         transform: translateX(0);
     }
 }
-.hide {
-    display: none;
-}
 button {
   color: #fff;
   border: none;

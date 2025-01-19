@@ -12,8 +12,7 @@ const clearTimer = e => {
     }
 };
 
-const speak = o => {
-    const {num, box} = o;
+const speak = (num, box) => {
     const utter = new SpeechSynthesisUtterance(num);
     utter.lang = 'en-US';
     window.speechSynthesis.speak(utter);
@@ -23,20 +22,9 @@ const speak = o => {
 };
 
 const play = e => {
-    speak({num, box: boxes[num - 1]});
+    speak(num, boxes[num - 1]);
     num = num < total ? ++num : 1;
     timer = setTimeout(play, 2500);
-};
-
-const control = e => {
-    started = !started;
-    if (started === true) {
-        start();
-        document.querySelector('#control').textContent = 'Stop';
-    } else {
-        stop();
-        document.querySelector('#control').textContent = 'Start';
-    }
 };
 
 const start = e => {
@@ -53,6 +41,17 @@ const update = n => {
     stop();
     num = n;
     start();
+};
+
+const control = e => {
+    started = !started;
+    if (started === true) {
+        start();
+        document.querySelector('#control').textContent = 'Stop';
+    } else {
+        stop();
+        document.querySelector('#control').textContent = 'Start';
+    }
 };
 
 const requestLock = async e => lock = await navigator.wakeLock.request('screen');
@@ -73,6 +72,7 @@ document.addEventListener('visibilitychange', e => {
 });
 
 document.querySelector('#control').addEventListener('click', control);
+
 document.addEventListener('DOMContentLoaded', e => {
     const container = document.querySelector('.container');
     for (let i = 1; i <= total; i++) {
